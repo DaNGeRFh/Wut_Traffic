@@ -1,11 +1,13 @@
 package kerrykfm.danger_fh.wut2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -44,6 +46,19 @@ public class MainActivity extends AppCompatActivity {
 
             } // onClick
         });
+
+        //listView Controller
+        //Get Value from Class
+        MyConstant myConstant = new MyConstant();
+        int[] ints = myConstant.getInts();
+
+        //Get Value from xml
+        String[] titleStrings = getResources().getStringArray(R.array.title);
+        String[] detailStrings = getResources().getStringArray(R.array.detail);
+
+        //Create ListView
+        TrafficAdapter trafficAdapter = new TrafficAdapter(MainActivity.this, titleStrings, detailStrings, ints);
+        listView.setAdapter(trafficAdapter);
 
     } // Main Method
 } // Main Class นี่คือ คลาสหลัก

@@ -35,7 +35,7 @@
         android:id="@+id/textView1"
         android:textSize="@dimen/h1"
         android:textStyle="normal|bold"
-        android:textColor="@color/aText"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
