@@ -50,15 +50,26 @@ public class MainActivity extends AppCompatActivity {
         //listView Controller
         //Get Value from Class
         MyConstant myConstant = new MyConstant();
-        int[] ints = myConstant.getInts();
+        final int[] ints = myConstant.getInts();
 
         //Get Value from xml
-        String[] titleStrings = getResources().getStringArray(R.array.title);
-        String[] detailStrings = getResources().getStringArray(R.array.detail);
+        final String[] titleStrings = getResources().getStringArray(R.array.title);
+        final String[] detailStrings = getResources().getStringArray(R.array.detail);
 
         //Create ListView
         TrafficAdapter trafficAdapter = new TrafficAdapter(MainActivity.this, titleStrings, detailStrings, ints);
         listView.setAdapter(trafficAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class); // ย้ายจากหน้า A to B
+                intent.putExtra("Title", titleStrings[position]); //ส่งค่า Title
+                intent.putExtra("Image", ints[position]); // ส่งค่า Image
+                intent.putExtra("Detail", detailStrings[position]); //ส่งค่า Detail
+                startActivity(intent);
+            }
+        });
 
     } // Main Method
 } // Main Class นี่คือ คลาสหลัก
